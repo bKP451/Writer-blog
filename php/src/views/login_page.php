@@ -1,3 +1,6 @@
+<?php
+require_once './../db_config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,19 +11,26 @@
     <link rel="stylesheet" type="text/css" href="/../decoration/login_page.css">
 </head>
 <body>
-<form action="action_page.php" method="post">
+
+<form action="./../validation/admin_form_validation.php" method="post">
   <div class="imgcontainer">
     <img src="/../dawadi_ankit_image.jpg" alt="dawadi_ankit_image" class="avatar">
   </div>
 
   <div class="container">
+    <?php if(isset($_GET['error'])){ ?>
+      <p class="error">
+        <?php echo $_GET['error']; ?>
+      </p>
+    <?php } ?>
+
     <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <input type="text" placeholder="Enter Username" name="admin-username" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" name="admin-password" required>
 
-    <button type="submit">Login</button>
+    <button type="submit" name="admin-login">Login</button>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>

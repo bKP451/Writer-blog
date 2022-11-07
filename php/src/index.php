@@ -8,22 +8,21 @@
     <title>AAKASH_EXPLORER</title>
 </head>
 <body>
-
     <a href="/views/create_page.php"><h1>Add an article !!! </h1></a>
     <?php
-    if ($result = $conn->query("SELECT * FROM ARTICLES")) {
-        while ($data = $result->fetch_object()) {
-            $posts[] = $data;
-        }
-
-        foreach ($posts as $post) {
-            echo "<h1><u>".$post->post_title."</u></h1>";
-            echo "<p>".$post->post_body."</p>";
+    $read_articles_query = 'SELECT * FROM ARTICLES';
+    $read_articles_query_execution = $conn->query($read_articles_query);
+    $number_of_articles = $read_articles_query_execution->num_rows;
+    if($number_of_articles>0){
+        while($article = $read_articles_query_execution->fetch_object()){
+            echo "<h1>".$article->post_title."</h1>";
+            echo "<p>".$article->post_body."</p>";
             echo "<hr>";
         }
+    }else {
+        echo "NO ARTICLES !! BROTHER AND SISTERS !";
     }
-    
-    
-    ?>    
+    ?>
+    <script>console.log($number_of_articles)</script>
 </body>
 </html>

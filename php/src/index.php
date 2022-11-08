@@ -8,7 +8,6 @@
     <title>AAKASH_EXPLORER</title>
 </head>
 <body>
-    <a href="/views/create_page.php"><h1>Add an article !!! </h1></a>
     <?php
     $read_articles_query = 'SELECT * FROM ARTICLES';
     $read_articles_query_execution = $conn->query($read_articles_query);
@@ -23,6 +22,5 @@
         echo "NO ARTICLES !! BROTHER AND SISTERS !";
     }
     ?>
-    <script>console.log($number_of_articles)</script>
 </body>
 </html>

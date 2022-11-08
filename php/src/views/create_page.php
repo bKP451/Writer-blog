@@ -1,4 +1,6 @@
-<?php include('../server.php') ?>
+<?php 
+session_start();
+include('../server.php') ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +8,8 @@
     <link rel="stylesheet" type="text/css" href="./decoration/create_page.css">
 </head>
 <body>
+	
+<?php	if(isset($_SESSION['admin-name'])){ ?>
 	<form method="post" action="/../server.php" >
 		<div class="input-group">
 			<label>Post Title</label>
@@ -21,5 +25,11 @@
 			<button class="btn" type="submit" name="upload" >Upload</button>
 		</div>
 	</form>
+	<?php }  else { ?>
+	<?php	
+		echo "Good day !! YOU ARE THE READER<br>";
+        echo "View Aakash blog at <a href='/../index.php'>high-explorer</a>";
+		?>
+    <?php } ?>
 </body>
 </html>

@@ -12,6 +12,7 @@ session_start();
     <title>ADMIN PAGE</title>
 <script src="https://kit.fontawesome.com/f563fa9849.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     
 <?php if(isset($_SESSION['admin-name'])){ ?>
@@ -36,23 +37,35 @@ session_start();
                 <h1><?php echo $article->post_title ?></h1>
                 <p><?php echo ((strlen($article->post_body)>100) ? (substr($article->post_body, 0,100).'...'):$article->post_body) ?></p>
 
-
+                <!-- anchor tag for updating the specified article !! -->
+                
                 <a href="create_page.php?edit=<?php echo $article->post_id; ?>">
                 <i class='fa-solid fa-pen-nib'></i>
             </a>
-                <i class='fa-solid fa-trash'></i>
+                <!-- anchor tag for deleting the specified article !! -->
+                <button onClick="delete_confirmation('<?php echo $article->post_title; ?>', '<?php echo $article->post_id; ?>')">
+            <i class='fa-solid fa-trash'></i>
+                <!-- </a> -->
+            </button>
                 <hr>
            <?php } ?>
       <?php  }else { ?>
-            <h2>NO ARTICLES !! AAKASH - WE KNOW IN OUR HEART YOU ARE A WONDERFUL WRITER !</h2>
+            <h2>NO ARTICLES !! YOU HAVE NOT POSTED ANY ARTICLES !!</h2>
        <?php } ?>
    <?php }else { ?>
         <h2>SORRY !! IT SEEMS YOU ARE NOT THE ADMIN</h2><br>
         <p>View Aakash blog at <a href='/../index.php'>high-explorer</a></p>
   <?php  }  ?>
-
-
-
-
+  <script>
+    function delete_confirmation(article_title, article_id){
+        if (confirm(`Do you want to delete an article titled "${article_title}" ?`)){
+            console.log("You really want me to delete !!");
+            console.log(article_id);
+            location.replace(`/./../server.php?del=${article_id}`);
+        } else {
+            console.log("You ought to keep me !!");
+        }
+    }
+    </script>
 </body>
 </html>

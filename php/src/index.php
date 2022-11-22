@@ -9,10 +9,11 @@
     <title>AAKASH EXPLORER</title>
 </head>
 <body>
+    <marquee>welcome to my page </marquee>
     <header class="header">
         <nav class="navbar">
             <ul class="nav_list">
-                <li><a href="#">Home</a></li>
+                <li><a href="#"><b>Home</b></a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
